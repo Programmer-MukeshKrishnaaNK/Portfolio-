@@ -8,8 +8,7 @@ Rather than collecting technologies, I focus on shipping products that solve rea
 
 Currently exploring AI-assisted software development, product engineering, modern frontend architecture, and user-centered design.
 
-Visit: https://portfolio-woad-seven-40.vercel.app/   
-:)
+Visit: https://portfolio-woad-seven-40.vercel.app/   :)
 ---
 
 ## Featured Projects
