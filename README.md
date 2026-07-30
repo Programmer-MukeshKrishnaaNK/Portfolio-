@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mukesh Krishnaa NK
 
-## Getting Started
+> **Student • Product Engineer • AI-Assisted Builder**
 
-First, run the development server:
+I enjoy building digital products that combine thoughtful design, solid engineering, and memorable user experiences.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Rather than collecting technologies, I focus on shipping products that solve real problems, experimenting with modern development workflows, and constantly refining my craft through iteration.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Currently exploring AI-assisted software development, product engineering, modern frontend architecture, and user-centered design.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit: https://portfolio-woad-seven-40.vercel.app/   
+:)
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Featured Projects
 
-## Learn More
+### 🌌 The Midnight Library
+An immersive AI-powered reading sanctuary built around Google Gemini, designed to transform long-form reading into a cinematic digital experience.
 
-To learn more about Next.js, take a look at the following resources:
+**Highlights**
+- Editorial-inspired interface
+- Google Gemini integration
+- Premium UI & animations
+- Client-side architecture
+- Responsive experience
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔗 Live Demo: https://the-midnight-library.netlify.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 🎧 Ether Lofi Experience
+A distraction-free workspace combining a Pomodoro timer, ambient lofi music, and a scratchpad into one elegant productivity environment.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Highlights**
+- Web Audio API
+- Focus timer
+- Scratchpad
+- Minimal interface
+- Responsive design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔗 Live Demo: https://ether-lofi-experience-wheat.vercel.app/
+
+---
+
+### 🍽 Smart Restaurant Reservation Website
+A modern restaurant reservation concept focused on premium visual design, responsive layouts, and an intuitive reservation experience.
+
+**Highlights**
+- Premium UI
+- Responsive design
+- Modern frontend
+- Elegant user experience
+
+🔗 Live Demo: https://smart-restaurant-reservation-websit.vercel.app/
+
+---
+
+## Tech Stack
+
+### Languages
+
+- TypeScript
+- JavaScript
+- Python
+- SQL
+- HTML
+- CSS
+
+### Frontend
+
+- Next.js
+- React
+- Tailwind CSS
+- Framer Motion
+- shadcn/ui
+
+### Tools
+
+- Git & GitHub
+- Figma
+- Vercel
+- Claude Code
+- AI-assisted development workflows
+
+---
+
+## Philosophy
+
+I enjoy building products where design and engineering complement each other.
+
+My workflow focuses on:
+
+- Product-first thinking
+- Rapid prototyping
+- Modern UI/UX
+- Performance
+- Continuous iteration
+- Clean architecture
+
+I believe great software is created through thoughtful decisions, attention to detail, and relentless refinement.
+
+---
+
+## Current Focus
+
+- Building polished digital products
+- Product engineering
+- AI-assisted development
+- UI/UX design
+- Learning scalable system architecture
+
+---
+
+## Connect
+
+📧 **Email**
+
+mindsofmukesh@gmail.com
+
+🌐 **Portfolio**
+
+(Your Portfolio Link)
+
+💻 **GitHub**
+
+https://github.com/Programmer-MukeshKrishnaaNK
+
+💼 **LinkedIn**
+
+https://www.linkedin.com/in/mukesh-krishnaa-nk-44488b371/
+
+📸 **Instagram**
+
+https://www.instagram.com/thelifeof_mukesh/
+
+🐦 **X**
+
+https://x.com/thelifeofmukesh
+
+---
+
+> *"Build products people remember."*
