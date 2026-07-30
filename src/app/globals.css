@@ -1,0 +1,413 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* ==========================================================================
+   QUIET SYSTEMS — design language
+   --------------------------------------------------------------------------
+   Three rules govern every decision in this file.
+
+   1. One surface family.  Near-black (#050505) ground, #111111 cards, and a
+      single hairline value for structure. Depth comes from light, not from
+      stacked greys.
+   2. Accent discipline.  Cyan means "live / interactive / system". Violet
+      belongs to the flagship work only. The two never appear in the same
+      element, which is what keeps the palette reading as intentional.
+   3. Space is the material.  An 8pt grid with generous section rhythm.
+      Nothing is decorated to fill a gap; the gap is the point.
+   ========================================================================== */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* --- Surfaces ------------------------------------------------------- */
+  --color-ground: var(--ground);
+  --color-ground-raised: var(--ground-raised);
+  --color-card-surface: var(--card-surface);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+
+  /* --- Ink ------------------------------------------------------------ */
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+
+  /* --- Accents -------------------------------------------------------- */
+  --color-cyan-soft: var(--accent-cyan);
+  --color-violet-soft: var(--accent-violet);
+
+  /* --- Type ----------------------------------------------------------- */
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Sized so a three-line hero still clears a 900px-tall laptop viewport
+     together with its eyebrow, lead, CTA row, and metadata bar. Larger than
+     this and the last line falls below the fold, which costs far more than
+     the extra scale gains. */
+  --text-display: clamp(3rem, 9.6vw, 9.5rem);
+  --text-display--line-height: 0.86;
+  --text-display--letter-spacing: -0.045em;
+
+  --text-mega: clamp(2.75rem, 7.5vw, 6.5rem);
+  --text-mega--line-height: 0.92;
+  --text-mega--letter-spacing: -0.038em;
+
+  --text-title: clamp(2rem, 4.4vw, 3.75rem);
+  --text-title--line-height: 1.02;
+  --text-title--letter-spacing: -0.03em;
+
+  --text-subtitle: clamp(1.5rem, 2.4vw, 2.125rem);
+  --text-subtitle--line-height: 1.16;
+  --text-subtitle--letter-spacing: -0.022em;
+
+  --text-lead: clamp(1.0625rem, 1.5vw, 1.375rem);
+  --text-lead--line-height: 1.58;
+  --text-lead--letter-spacing: -0.011em;
+
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: 0.16em;
+
+  /* --- 8pt spacing rhythm ---------------------------------------------
+     Careful with names here. Every key in the `--spacing-*` namespace also
+     generates an `inline-<key>` utility for `inline-size`, so a token named
+     `block` produces an `.inline-block` rule that silently overrides the
+     width of every `display: inline-block` element on the site — including
+     each masked word in the type reveals. Hence `stack`, not `block`. */
+  --spacing-section: clamp(6rem, 12vw, 13rem);
+  --spacing-stack: clamp(3rem, 6vw, 6rem);
+  --spacing-gutter: clamp(1.5rem, 5vw, 5rem);
+
+  /* --- Motion --------------------------------------------------------- */
+  --ease-out-quiet: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quiet: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* --- Radii (near-square; precision over friendliness) --------------- */
+  --radius: 0.5rem;
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 2.5);
+  --radius-4xl: calc(var(--radius) * 3);
+
+  /* --- shadcn utility surface ----------------------------------------
+     These generate the `bg-background`, `border-border`, `text-muted-
+     foreground` etc. utilities that every shadcn primitive is written
+     against. The values themselves are defined once, below, in terms of the
+     Quiet Systems palette — so the primitives inherit the system rather than
+     carrying a second one. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root,
+.dark {
+  /* Surfaces */
+  --ground: #050505;
+  --ground-raised: #0a0a0b;
+  --card-surface: #111111;
+  --hairline: rgb(255 255 255 / 0.07);
+  --hairline-strong: rgb(255 255 255 / 0.14);
+
+  /* Ink — every value below clears WCAG AA (4.5:1) on --ground.
+     Measured: ink 20.4:1 · secondary 10.3:1 · muted 6.2:1 · faint 4.7:1 */
+  --ink: #ffffff;
+  --ink-secondary: #b4b4bd;
+  --ink-muted: #8f8f99;
+  --ink-faint: #7c7c86;
+
+  /* Accents */
+  --accent-cyan: #6ee7f0;
+  --accent-violet: #a78bfa;
+
+  /* shadcn token bridge — mapped onto the palette above so any shadcn
+     primitive inherits the system instead of fighting it. */
+  --background: var(--ground);
+  --foreground: var(--ink);
+  --card: var(--card-surface);
+  --card-foreground: var(--ink);
+  --popover: #0e0e0f;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--ground);
+  --secondary: #17171a;
+  --secondary-foreground: var(--ink);
+  --muted: #131315;
+  --muted-foreground: var(--ink-muted);
+  --accent: #17171a;
+  --accent-foreground: var(--ink);
+  --destructive: #f87171;
+  --border: var(--hairline);
+  --input: var(--hairline-strong);
+  --ring: var(--accent-cyan);
+  --chart-1: var(--accent-cyan);
+  --chart-2: var(--accent-violet);
+  --chart-3: #b4b4bd;
+  --chart-4: #6b6b74;
+  --chart-5: #3a3a40;
+  --sidebar: var(--ground-raised);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--accent-cyan);
+  --sidebar-primary-foreground: var(--ground);
+  --sidebar-accent: #17171a;
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--hairline);
+  --sidebar-ring: var(--accent-cyan);
+}
+
+@layer base {
+  /* Written as plain declarations rather than `@apply`. The base layer runs
+     on every incremental rebuild, and an `@apply` here makes it depend on the
+     utility generation pass having already resolved the theme — which it has
+     not, during a hot update that touched this file. That ordering is what
+     produces the "cannot apply unknown utility class" failure. Referencing
+     the custom properties directly has no such dependency. */
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    background-color: var(--ground);
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+    /* Lenis drives scrolling; native smooth-scroll would double-animate.
+       The reduced-motion block below hands control back to the browser. */
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--ground);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.65;
+    letter-spacing: -0.008em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    /* Prevents horizontal creep from parallax/overshoot transforms without
+       creating a scroll container that would break `position: sticky`. */
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Numerals in data contexts must not shift width as they tick. */
+  time,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent-cyan) 26%, transparent);
+    color: #ffffff;
+  }
+
+  /* A single, visible, consistent focus ring. Never removed — only styled. */
+  :focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Fires the moment a keyboard user tabs in, before reaching the content. */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 50%;
+    z-index: 200;
+    translate: -50% -160%;
+    padding: 0.625rem 1.25rem;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 999px;
+    background: var(--card-surface);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: translate 220ms var(--ease-out-quiet);
+  }
+
+  .skip-link:focus-visible {
+    translate: -50% 0;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Set by an inline script in <head> on a repeat visit within a session, so
+     the loading overlay is gone before first paint rather than being removed
+     a frame later — which would read as a flicker. */
+  html.booted .preloader {
+    display: none;
+  }
+}
+
+@layer components {
+  /* Small uppercase mono label. Used for section indices, metadata keys,
+     and anything that should read as instrumentation rather than prose. */
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Editorial rule used to open and close sections. */
+  .rule {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--hairline-strong) 12%,
+      var(--hairline-strong) 88%,
+      transparent
+    );
+  }
+
+  /* Card treatment: flat surface, hairline edge, light implied from above. */
+  .surface {
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 0.028), transparent 42%),
+      var(--card-surface);
+    border: 1px solid var(--hairline);
+  }
+}
+
+/* Streaming edges in the architecture diagrams. The dash travels along the
+   path, which is the one property that distinguishes a streaming connection
+   from a request/response one at a glance. Frozen by the reduced-motion
+   block below, where the dash pattern alone still reads as different. */
+@keyframes arch-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.arch-stream {
+  stroke-dasharray: 5 7;
+  animation: arch-dash 1.4s linear infinite;
+}
+
+@utility text-gradient-ink {
+  background: linear-gradient(180deg, #ffffff 22%, rgb(255 255 255 / 0.58));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Fixed grain. Static by design — an animated grain costs a full-screen
+   repaint every frame for an effect nobody consciously registers. */
+@utility grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Lenis. These three rules are required for the library to own the scroll
+   position cleanly; without them the native scroll container and the animated
+   one disagree about document height. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Reduced motion
+   Honours the OS setting rather than a toggle nobody finds. Transforms are
+   neutralised and durations collapsed, but nothing is hidden — every reveal
+   animation ships with its resting state as the default so content is
+   readable even if no animation ever runs.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .grain {
+    display: none;
+  }
+
+  /* No intro sequence at all. The page is already rendered underneath. */
+  .preloader {
+    display: none;
+  }
+}
